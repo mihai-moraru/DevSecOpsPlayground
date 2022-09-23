@@ -38,9 +38,9 @@ jobs:
 
       # - name: Upload MobSF Analysis PDF Result
       #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: mobsf-report.pdf
-      #     path: mobsf-report.pdf
+        # with:
+        #   name: mobsf-report.pdf
+        #   path: mobsf-report.pdf
 
       # - name: Upload MobSF Analysis JSON Result
       #   uses: actions/upload-artifact@v2
@@ -60,7 +60,11 @@ jobs:
       - name: Upload MobSF Analysis PDF Result
         uses: actions/upload-artifact@v2
         with:
-          args: 'path "build/app/outputs/apk/release/app-release.apk" --sarif --output results.sarif || true'
+          name: mobsf-report.pdf
+          path: mobsf-report.pdf
+        
+        # with:
+        #   args: 'path "build/app/outputs/apk/release/app-release.apk" --sarif --output results.sarif || true'
 
       - name: Upload mobsfscan report
         uses: github/codeql-action/upload-sarif@v1
