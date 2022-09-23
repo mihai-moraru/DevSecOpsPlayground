@@ -50,7 +50,6 @@ jobs:
 
       - name: Run MobSF Analysis
         uses: MobSF/mobsfscan@main
-        with:
         args: '. --sarif --output results.sarif || true'
         env:
           INPUT_FILE_NAME: build/app/outputs/apk/app.apk
