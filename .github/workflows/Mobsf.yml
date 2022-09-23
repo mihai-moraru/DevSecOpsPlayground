@@ -66,5 +66,5 @@ jobs:
 
       - name: Upload mobsfscan report
         uses: github/codeql-action/upload-sarif@v1
-      with:
-        sarif_file: results.sarif
+        with:
+          sarif_file: results.sarif
