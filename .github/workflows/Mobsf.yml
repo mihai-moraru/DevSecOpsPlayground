@@ -29,21 +29,31 @@ jobs:
       - name: Flutter Build
         run: flutter build apk
 
+      # - name: Run MobSF Analysis
+      #   uses: fundacaocerti/mobsf-action@v1.7.1
+      #   env:
+      #     INPUT_FILE_NAME: build/app/outputs/apk/release/app-release.apk
+      #     SCAN_TYPE: apk
+      #     OUTPUT_FILE_NAME: mobsf-report
+
+      # - name: Upload MobSF Analysis PDF Result
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: mobsf-report.pdf
+      #     path: mobsf-report.pdf
+
+      # - name: Upload MobSF Analysis JSON Result
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: mobsf-report.json
+      #     path: mobsf-report.json
+
       - name: Run MobSF Analysis
-        uses: fundacaocerti/mobsf-action@v1.7.1
-        env:
-          INPUT_FILE_NAME: build/app/outputs/apk/release/app-release.apk
-          SCAN_TYPE: apk
-          OUTPUT_FILE_NAME: mobsf-report
-
-      - name: Upload MobSF Analysis PDF Result
-        uses: actions/upload-artifact@v2
+        uses: MobSF/mobsfscan@main
         with:
-          name: mobsf-report.pdf
-          path: mobsf-report.pdf
-
-      - name: Upload MobSF Analysis JSON Result
-        uses: actions/upload-artifact@v2
+          args: '. --sarif --output results.sarif || true'
+          
+      - name: Upload mobsfscan report
+        uses: github/codeql-action/upload-sarif@v1
         with:
-          name: mobsf-report.json
-          path: mobsf-report.json
+          sarif_file: results.sarif
