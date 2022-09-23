@@ -54,6 +54,7 @@ jobs:
           args: 'path "build/app/outputs/apk/release/app-release.apk" --sarif --output results.sarif  --json --output results.json || true'
 
 
+
       - name: Upload MobSF Analysis PDF Result
         uses: actions/upload-artifact@v2
         with:
