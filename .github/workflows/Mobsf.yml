@@ -51,18 +51,13 @@ jobs:
       - name: Run MobSF Analysis
         uses: MobSF/mobsfscan@main
         with:
-          args: 'path "build/app/outputs/apk/release/app-release.apk" . --sarif --output results.sarif || true --json --output results.json || true'
+          args: '. --sarif --output results.sarif || true'
 
-
-
-      - name: Upload MobSF Analysis JSON Result
-        uses: actions/upload-artifact@v2
-        with:
-          name: results.json
-          path: results.json
-        
-        # with:
-        #   args: 'path "build/app/outputs/apk/release/app-release.apk" --sarif --output results.sarif || true'
+      # - name: Upload MobSF Analysis JSON Result
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: results.json
+      #     path: results.json
 
       - name: Upload mobsfscan report
         uses: github/codeql-action/upload-sarif@v1
