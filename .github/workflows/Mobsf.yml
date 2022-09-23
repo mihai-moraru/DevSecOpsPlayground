@@ -51,8 +51,8 @@ jobs:
       - name: Run MobSF Analysis
         uses: MobSF/mobsfscan@main
         with:
-          args: '. --sarif --output results.sarif || true'
-          
+          args: 'path "build/app/outputs/apk/release/app-release.apk" --sarif --output results.sarif || true'
+
       - name: Upload mobsfscan report
         uses: github/codeql-action/upload-sarif@v1
         with:
