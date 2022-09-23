@@ -1,4 +1,4 @@
-name: Mobsfscan
+name: Mobsfscanning Mobile App
 on:
   push:
     branches:
@@ -21,7 +21,6 @@ jobs:
         uses: subosito/flutter-action@v1
         with:
           flutter-version: '1.9.1+hotfix.6'
-
       - name: Flutter Install Dependencies
       - run: flutter pub get
 
