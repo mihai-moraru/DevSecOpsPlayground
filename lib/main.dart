@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:my_movie_app/screens/home/home_screen.dart';
 import 'package:my_movie_app/screens/splash/splash.dart';
+// import 'package:my_movie_app/screens/splash/splash.dart';
 
 void main() {
   runApp(const MyApp());

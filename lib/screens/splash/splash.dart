@@ -9,10 +9,53 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  bool _isButtonDisabled = false;
   @override
   void initState() {
     super.initState();
-    navigateHome();
+  }
+
+  final _email = TextFormField(
+    key: const Key('email_input'),
+    keyboardType: TextInputType.emailAddress,
+    autofocus: false,
+    initialValue: 'mmo335@maersk.com',
+    decoration: InputDecoration(
+      hintText: 'Email',
+      contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(6.0)),
+    ),
+  );
+
+  final _password = TextFormField(
+    key: const Key('password_input'),
+    autofocus: false,
+    initialValue: 'password',
+    obscureText: true,
+    decoration: InputDecoration(
+      hintText: 'Password',
+      contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(6.0)),
+    ),
+  );
+
+  Widget _loginBtn() {
+    return ElevatedButton(
+      key: const Key('loginBtn'),
+      onPressed: _isButtonDisabled
+          ? null
+          : () {
+              setState(() {
+                _isButtonDisabled = true;
+              });
+              navigateHome();
+            },
+      child: _isButtonDisabled
+          ? const CircularProgressIndicator(
+              color: Colors.white,
+            )
+          : const Text("Login"),
+    );
   }
 
   @override
@@ -28,10 +71,14 @@ class _SplashScreenState extends State<SplashScreen> {
               style: Theme.of(context).textTheme.headline4,
             ),
           ),
-          const SizedBox(height: 50),
-          const CircularProgressIndicator(
-            color: Colors.white,
-          )
+          const SizedBox(height: 48.0),
+          //email widget
+          _email,
+          const SizedBox(height: 8.0),
+          //password widget
+          _password,
+          const SizedBox(height: 24.0),
+          _loginBtn(),
         ],
       ),
     );
@@ -42,6 +89,7 @@ class _SplashScreenState extends State<SplashScreen> {
     final route = MaterialPageRoute(
       builder: (_) => const HomeScreen(),
     );
+
     Navigator.pushReplacement(context, route);
   }
 }
