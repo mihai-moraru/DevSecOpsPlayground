@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_movie_app/models/cast.dart';
 import 'package:my_movie_app/models/movie.dart';
 import 'package:my_movie_app/service/movie_api.dart';
 import 'package:my_movie_app/widget/movie_card.dart';
@@ -25,7 +26,9 @@ class _MovieTabState extends State<MovieTab> {
       itemCount: discoverMovies.length,
       itemBuilder: (context, index) {
         final movie = discoverMovies[index];
-        return MovieCard(movie: movie);
+        return MovieCard(
+          movie: movie,
+        );
       },
     );
   }

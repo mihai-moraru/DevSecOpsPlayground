@@ -81,7 +81,10 @@ class MovieCard extends StatelessWidget {
   void navigateDetailPage(BuildContext context, Movie movie) {
     final route = MaterialPageRoute(
       builder: (context) {
-        return MovieScreen(movie: movie);
+        return MovieScreen(
+          movie: movie,
+          movieId: movie.id,
+        );
       },
     );
     Navigator.push(context, route);
