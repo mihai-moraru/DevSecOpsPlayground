@@ -25,7 +25,6 @@ class _MovieScreenState extends State<MovieScreen> {
 
   Future<void> fetchCast(int movieId) async {
     final response = await MovieApi.fetchCast(movieId);
-    print(response[0].name);
     setState(() {
       cast = response;
     });

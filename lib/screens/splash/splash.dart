@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Widget _loginBtn() {
     return ElevatedButton(
-      key: const Key('loginBtn'),
+      key: const Key('login_btn'),
       onPressed: _isButtonDisabled
           ? null
           : () {
@@ -52,6 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
             },
       child: _isButtonDisabled
           ? const CircularProgressIndicator(
+              key: Key('loading'),
               color: Colors.white,
             )
           : const Text("Login"),
