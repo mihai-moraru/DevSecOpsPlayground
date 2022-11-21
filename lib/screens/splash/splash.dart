@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     key: const Key('email_input'),
     keyboardType: TextInputType.emailAddress,
     autofocus: false,
-    initialValue: 'mmo335@maersk.com',
+    initialValue: 'notmyaddress@mail.com',
     decoration: InputDecoration(
       hintText: 'Email',
       contentPadding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
