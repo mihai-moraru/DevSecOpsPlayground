@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:patrol/patrol.dart';
 
 import 'config.dart';
-import 'package:my_movie_app/main.dart'as app;
+import 'package:my_movie_app/main.dart' as app;
 
 // This is an example integration test using Patrol. Use it as a base to
 // create your own Patrol-powered test.
@@ -13,29 +13,28 @@ import 'package:my_movie_app/main.dart'as app;
 
 void main() {
   patrolTest(
-    'counter state is the same after going to home and switching apps And sing up',
+    'sign in',
     config: patrolConfig,
     nativeAutomation: true,
     ($) async {
-      // Replace with your own app widget.
       await $.pumpWidgetAndSettle(const app.MyApp());
-      await $.native.pressHome();
-      await $.native.pressDoubleRecentApps();
+      // await $.native.pressHome();
+      // await $.native.pressDoubleRecentApps();
+      // await $.native.openNotifications();
+      // await $.native.enableWifi();
+      // await $.native.disableWifi();
+      // await $.native.enableWifi();
+      // await $.native.pressBack();
+
+      await $(#email_input).enterText('test@learningday.com');
+      // await $(#nameTextField).enterText('Mihai');
+      await $(#password_input).enterText('password');
+      // await $(#termsCheckbox).tap();
+      await $(#login_btn).tap();
+
+      // expect($('app'), findsOneWidget);
+      expect($(#main_appBar), findsOneWidget);
       await $.native.openNotifications();
-      await $.native.enableWifi();
-      await $.native.disableWifi();
-      await $.native.enableWifi();
-      await $.native.pressBack();
-
-      await $(#emailTextField).enterText('bartek@awesome.com');
-      await $(#nameTextField).enterText('Bartek');
-      await $(#passwordTextField).enterText('ny4ncat');
-      await $(#termsCheckbox).tap();
-      await $(#signUpButton).tap();
-
-      expect($('app'), findsOneWidget);
-
-
     },
   );
 }

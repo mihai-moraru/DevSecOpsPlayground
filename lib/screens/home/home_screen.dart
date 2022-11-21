@@ -24,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          key: const Key('main_appBar'),
           title: const Text('Discover'),
           bottom: const TabBar(
             tabs: [
